@@ -30,7 +30,7 @@
                 <input id="password" type="password" name="password" required autocomplete="current-password" class="form-input border-b border-gray-400 mt-1 block w-full outline-none" placeholder="Enter Password">
             </div>
             
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">Login</button>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">Register</button>
         </form>
         
         <div class="mt-4 text-center">Or</div>
