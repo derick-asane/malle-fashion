@@ -7,11 +7,11 @@
     <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
         <h2 class="text-2xl font-semibold mb-6 text-center">Register</h2>
         
-        <form method="POST" action="" class="space-y-4">
+        <form method="POST" action="{{ route('storeuser')}}" class="space-y-4">
             @csrf
             
             <div>
-                <label for="email" class="block font-medium">User name</label>
+                <label for="username" class="block font-medium">Username</label>
                 <input id="username" type="text" name="username" required autofocus class="form-input border-b border-gray-400 mt-1 block w-full outline-none" placeholder="Enter UserName">
             </div>
 
@@ -21,8 +21,8 @@
             </div>
 
             <div>
-                <label for="email" class="block font-medium">Phone</label>
-                <input id="email" type="email" name="email" required autofocus class="form-input border-b border-gray-400 mt-1 block w-full outline-none" placeholder="Enter phone number">
+                <label for="phone" class="block font-medium">Phone</label>
+                <input id="phone" type="text" name="phone" required autofocus class="form-input border-b border-gray-400 mt-1 block w-full outline-none" placeholder="Enter phone number">
             </div>
             
             <div>
@@ -40,7 +40,7 @@
              <span>Login with Google</span>
         </a>
         <div class="flex justify-center mt-2">
-            <span>Already have an account ? <a href="{{ route('login')}}" class="text-blue-500">Login</a></span>
+            <span>Already have an account ? <a href="{{ route('loginform')}}" class="text-blue-500">Login</a></span>
         </div>
     </div>
 </div>

@@ -8,7 +8,15 @@
 
 
 <div class="bg-gray-100 flex items-center justify-center h-screen">
-
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
         <h2 class="text-2xl font-semibold mb-6 text-center">Login</h2>
         
@@ -35,7 +43,7 @@
              <span>Login with Google</span>
         </a>
         <div class="flex justify-center mt-2">
-            <span>Do you have an account ? <a href="{{ route('register')}}" class="text-blue-500"> Register</a></span>
+            <span>Do you have an account ? <a href="{{ route('registerform')}}" class="text-blue-500"> Register</a></span>
         </div>
     </div>
 </div>

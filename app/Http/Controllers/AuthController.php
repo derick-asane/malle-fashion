@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Auth;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Session;
 use App\Models\User;
@@ -10,7 +11,9 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function showLoginForm()
+
+
+    public function create()
     {
         return view('auth.login');
     }
@@ -21,20 +24,40 @@ class AuthController extends Controller
 
         $user = User::where('email', $credentials['email'])->first();
 
-    if (!$user || !Hash::check($credentials['password'], $user->password)) {
-        // Retrieve the authenticated user's information
-        $user = Auth::user();
-        //store some user informations 
-        Session::put('user_name', $user->name);
-        // Authentication failed
-        return back()->withErrors(['email' => 'Invalid email or password']);
-    }
+        if (!$user || !Hash::check($credentials['password'], $user->password)) {
+            
+            // Authentication failed
+            return back()->withErrors(['email' => 'Invalid email or password']);
 
+        }
+
+
+        if($user){
+             Auth::login($user);
+
+             
+
+            if($user->role ==='client'){
+                return redirect()->route('client.home')->with('login successful'); 
+            }else{
+                return redirect()->route('admin.dashboard')->with('login successful');      
+            }
+        }else{
+            // Handle the case where the user is not found
+        return back()->withErrors(['email' => 'User not found']);
+        }
+       
+        
     }
 
     public function logout()
     {
+        // Clear the session data
+        Session::flush();
+
         Auth::logout();
-        return redirect('/');
+
+        //Redirecting to the login page
+        return redirect()->route('loginform');
     }
 }

@@ -3,24 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Register;
+use App\Models\User;
+use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function showRegisterPage()
+    public function index()
     {
-        return view('auth.register');
+       
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('auth.register');
     }
 
     /**
@@ -28,7 +31,26 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'username' => 'required|string|min:4',
+            'email' => 'required|email|unique:users',
+            'phone' => 'required|string|min:9',
+            'password' => 'required|min:6'
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+       // Validation passed, create a new user
+        $user = User::create([
+            'username' => $request->input('username'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'password' => Hash::make($request->input('password'))
+        ]);
+
+        return response()->json(['message' => 'User created successfully', 'user' => $user]);
     }
 
     /**
