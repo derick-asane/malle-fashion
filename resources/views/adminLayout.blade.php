@@ -28,28 +28,45 @@
                     <img src="{{ asset('svg/avatar-icon.svg') }}" alt="User Avatar" class="rounded-full h-12 w-12 border border-red-400">
                     <span>{{Auth::User()->username}}</span>
                 </div>
+
                 <hr class="mb-4">
+
                 <div class="flex flex-col gap-4">
 
-                
                     <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
                         <img src="{{ asset('svg/dashboard-icon.svg') }}" alt="" class="h-8 w-8">
-                        <a href="http://">Dashboard</a>
+                        <a href="{{ route("admin.dashboard")}}">Dashboard</a>
                     </div>
+
 
                     <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
                         <img src="{{ asset('svg/users-icon.svg') }}" alt="" class="h-8 w-8">
-                        <a href="http://">Clients</a>
+                        <a href="http://">Users</a>
                     </div>
 
                     <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
                         <img src="{{ asset('svg/product-icon.svg') }}" alt="" class="h-8 w-8">
-                        <a href="http://">Products</a>
+                        <a href="{{ route("admin.product") }}">Products</a>
+                    </div>
+
+                    <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
+                        <img src="{{ asset('svg/shopping-bag.svg') }}" alt="" class="h-8 w-8">
+                        <a href="http://">Shop</a>
                     </div>
                     
                     <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
                         <img src="{{ asset('svg/order-icon.svg') }}" alt="" class="h-8 w-8">
                         <a href="http://">Orders</a>
+                    </div>
+
+                    <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
+                        <img src="{{ asset('svg/delivered-icon.svg') }}" alt="" class="h-8 w-8">
+                        <a href="http://">Delivered</a>
+                    </div>
+
+                    <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
+                        <img src="{{ asset('svg/delivered-icon.svg') }}" alt="" class="h-8 w-8">
+                        <a href="http://">Feedback</a>
                     </div>
                 </div>
                

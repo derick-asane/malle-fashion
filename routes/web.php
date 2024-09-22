@@ -44,6 +44,19 @@ Route::get('/home', function () {
 //Products route
 Route::get('/shop', [ProductController::class, 'index'])->name('client.shop');
 
+Route::get('/product', [ProductController::class, 'index'])->name('admin.product');
+
+Route::get('/addproduct', [ProductController::class, 'create'])->name('productform');
+Route::post('/addproduct', [ProductController::class, 'store'])->name('storeproduct');
+Route::post('/editproduct', [ProductController::class, 'edit'])->name('editproduct');
+Route::get('/editproduct', [ProductController::class, 'showProductEditform'])->name('editproductform');
+
+
+
+
+
+
+
 
 
 
