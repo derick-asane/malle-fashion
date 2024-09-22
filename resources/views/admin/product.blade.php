@@ -5,6 +5,13 @@
 <div class="w-full flex justify-center text-[20px] sm:text-[40px] bold italic">
     <span class="">List Of Products </span>
 </div>
+
+@if (session('success'))
+<div id="alert" class="absolute top-0 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-4 rounded mb-4 transition-transform duration-500 ease-in-out translate-y-[-100%]">
+    {{ session('success') }}
+</div>
+@endif
+
 <hr>
 <div class="flex justify-end my-4">
     <a href="{{ route("productform") }}" class="bg-green-500 px-2 py-1 text-white rounded">Add Product</a>
@@ -34,11 +41,11 @@
                     <td class="py-3 px-6">{{ $product->description }}</td>
                     <td class="py-3 px-6">XAF {{ number_format($product->price, 2) }}</td>
                     <td class="py-3 px-6">
-                        <a href="{{ route('editproductform') }}" class="text-blue-500 hover:text-blue-700">Edit</a>
+                        <a href="{{ route('editproductform', $product->id) }}" class="bg-green-400 text-white hover:bg-green-800 py-1 px-4 rounded">Edit</a>
                         <form action="" method="POST" class="inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-red-500 hover:text-red-700 ml-2">Delete</button>
+                            <button type="submit" class="bg-red-400  text-white hover:bg-red-700 ml-2 py-1 px-2 rounded">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -47,6 +54,24 @@
     </table>
 </div>
 
+
+<script>
+    // Display the alert with animation
+    const alert = document.getElementById('alert');
+    if (alert) {
+        alert.classList.remove('translate-y-[-100%]'); // Remove the initial translate class
+        alert.classList.add('translate-y-0'); // Bring it to the normal position
+
+        // Set a timeout to hide the alert after 3 seconds with animation
+        setTimeout(function() {
+            alert.classList.add('translate-y-[-100%]'); // Move it up
+            // Optionally, hide the element completely after the animation
+            setTimeout(() => {
+                alert.style.display = 'none'; // Hide the alert completely after animation is done
+            }, 500); // Match this with the duration of the transition
+        }, 3000); // 3000 milliseconds = 3 seconds
+    }
+</script>
 
 @endsection
 

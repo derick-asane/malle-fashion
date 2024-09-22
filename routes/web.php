@@ -48,8 +48,9 @@ Route::get('/product', [ProductController::class, 'index'])->name('admin.product
 
 Route::get('/addproduct', [ProductController::class, 'create'])->name('productform');
 Route::post('/addproduct', [ProductController::class, 'store'])->name('storeproduct');
-Route::post('/editproduct', [ProductController::class, 'edit'])->name('editproduct');
-Route::get('/editproduct', [ProductController::class, 'showProductEditform'])->name('editproductform');
+Route::get('product/{product}/editproduct', [ProductController::class, 'edit'])->name('editproductform');
+Route::put('product/{product}/updateproduct', [ProductController::class, 'update'])->name('updateproductform');
+
 
 
 
