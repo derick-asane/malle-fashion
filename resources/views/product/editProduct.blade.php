@@ -61,13 +61,13 @@
                 <label for="image" class="block font-medium">Image</label>
                 <input id="image" type="file" name="image"  class="form-input border-b border-gray-400 mt-1 block w-full outline-none" placeholder="Enter product price ...">
             </div>
-            @if($product->image)
-                <img src="{{ $product->image }}" alt="{{ $product->name }}" class="mt-2 w-24 h-auto">
+            @if($product->image_path)
+            <img src="{{ asset('storage/'.$product->image_path) }}" alt="{{ $product->name }}" class="object-cover w-full h-full rounded-lg">
+
             @endif
 
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">Update Product</button>
         </form>
-        
         
     </div>
 </div>

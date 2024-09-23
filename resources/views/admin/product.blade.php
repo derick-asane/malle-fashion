@@ -24,7 +24,7 @@
             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                 <th class="py-3 px-6 text-left">ID</th>
                 <th class="py-3 px-6 text-left">Image</th>
-                <th class="py-3 px-6 text-left">Product Name</th>
+                <th class="py-3 px-6 text-left">Name</th>
                 <th class="py-3 px-6 text-left">Description</th>
                 <th class="py-3 px-6 text-left">Price</th>
                 <th class="py-3 px-6 text-left">Actions</th>
@@ -35,10 +35,10 @@
                 <tr class="border-b border-gray-200 hover:bg-gray-100">
                     <td class="py-3 px-6 text-left">{{ $product->id }}</td>
                     <td class="py-3 px-6">
-                        <img src="{{ $product->image }}" alt="{{ $product->name }}" class="w-12 h-12">
+                        <img src="{{ asset('storage/'.$product->image_path) }}" alt="{{ $product->name }}" class="w-12 h-12">
                     </td>
                     <td class="py-3 px-6">{{ $product->name }}</td>
-                    <td class="py-3 px-6">{{ $product->description }}</td>
+                    <td class="py-3 px-6">{{ Str::limit($product->description, 30) }}</td>
                     <td class="py-3 px-6">XAF {{ number_format($product->price, 2) }}</td>
                     <td class="py-3 px-6">
                         <a href="{{ route('editproductform', $product->id) }}" class="bg-green-400 text-white hover:bg-green-800 py-1 px-4 rounded">Edit</a>

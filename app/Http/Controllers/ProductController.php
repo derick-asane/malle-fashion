@@ -19,7 +19,9 @@ class ProductController extends Controller
             $products = Product::all();
             return view('admin.product', compact('products'));
         }else{
-            return view('client.shop');
+            $products = Product::all();
+    
+            return view('client.shop', compact('products'));
         } 
         
     }
@@ -48,13 +50,11 @@ class ProductController extends Controller
         ]);
     
         // Get the image from the request
+        // Get the image from the request
         $image = $request->file('image');
 
-        // Encode the image to Base64
-        $imageData = base64_encode(file_get_contents($image));
-
-        // Prepare the Base64 string with the appropriate prefix
-        $base64Image = 'data:' . $image->getClientMimeType() . ';base64,' . $imageData;
+    // Define the path where the image will be stored
+    $imagePath = $image->store('images', 'public');
         // Store the product using the create() method
         $product = Product::create([
             'name' => $request->input('name'),
@@ -62,7 +62,7 @@ class ProductController extends Controller
             'category' => $request->input('category'),
             'gender' => $request->input('gender'),
             'price' => $request->input('price'),
-            'image' => $base64Image,
+            'image_path' => $imagePath, // Save the image path instead of base64 data
         ]);
 
         // Return a response
@@ -115,12 +115,11 @@ class ProductController extends Controller
    if ($request->hasFile('image')) {
     $image = $request->file('image'); // Get the uploaded file
 
-    // Read the file contents and encode it to Base64
-    $imageData = base64_encode(file_get_contents($image->getRealPath()));
+     // Define the path where the image will be stored
+     $imagePath = $image->store('images', 'public');
 
-    // Prepare the Base64 string with the appropriate prefix
-    $base64Image = 'data:' . $image->getClientMimeType() . ';base64,' . $imageData;
-    $product->image = $base64Image; // Store the Base64 image
+    $product->image = $imagePath; // Update the product image
+
 }
 
     // Save the updated product

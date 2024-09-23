@@ -10,19 +10,18 @@
             <div class="hidden md:flex md:items-center md:space-x-8 ml-6">
                 <a href="{{ route('client.home')}}" class="text-white">Home</a>
                 <a href="{{ route('client.shop')}}" class="text-white">Shop</a>
-                <a href="#" class="text-white">Services</a>
+                <a href="#" class="text-white">Orders</a>
                 <a href="#" class="text-white">Contact</a>
             </div>
             
             <div class="flex justify-end items-center">
                 <div class="relative" >
-                    <img src="{{ asset('svg/shopping-cart-logo1.svg')}}" alt="cart" class="h-10 w-10  mx-4 ">
+                    <a href="{{ route('client.cart') }}"><img src="{{ asset('svg/shopping-cart-logo1.svg')}}" alt="cart" class="h-10 w-10  mx-4 "></a>
                     <span class="absolute p-1 bg-slate-400 rounded-full top-0 ">
                         5 
                       </span>
                 </div>
                 
-
                 @if(Auth::check()) 
                 
                     

@@ -5,6 +5,8 @@ use App\Http\Middleware\AuthenticateMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\CartController;
+
 
 
 
@@ -53,8 +55,11 @@ Route::put('product/{product}/updateproduct', [ProductController::class, 'update
 
 
 
+//Cart route
 
-
+Route::get('/cart', [CartController::class, 'create'])->name('client.cart');
+Route::post('/cart/{product_id}', [CartController::class, 'addToCart'])->name('store.addtocart');
+Route::post('/cart/delete/{id}', [CartController::class, 'destroy'])->name('delete.cart');
 
 
 

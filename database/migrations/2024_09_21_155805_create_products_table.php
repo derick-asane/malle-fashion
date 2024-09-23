@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('category');
             $table->string('gender');
-            $table->longText('image');
+            $table->string('image_path');
             $table->timestamps();
         });
     }
