@@ -23,7 +23,7 @@
         <div id="alert" class="absolute top-0 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-white p-4 rounded mb-4 transition-transform duration-500 ease-in-out translate-y-[-100%]">
             {{ session('warn') }}
         </div>
-    @endif
+        @endif
 
         <hr>
         <div class="w-full flex justify-between items-center px-4">

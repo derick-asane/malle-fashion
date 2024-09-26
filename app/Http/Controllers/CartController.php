@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
 
 
 class CartController extends Controller
@@ -111,12 +113,24 @@ class CartController extends Controller
 
 
 
-        public function updateQuantity(Request $request)
+        public function updateQuantity(Request $request , $id)
         {
-            $cartItem = Cart::find($request->id);
-            $cartItem->quantity = $request->quantity;
-            $cartItem->save();
+             // Get the currently authenticated user
+            $user = auth()->user()->id;
 
-            return response()->json(['success' => true]);
+            // Find the cart item by id associated with the logged-in user
+            $cartItem = Cart::where('id', $id)
+                            ->where('user_id', $user)
+                            ->first();
+
+            // Update the quantity based on user input
+            if ($cartItem) {
+                $cartItem->quantity = $request->input('quantity');
+                $cartItem->save();
+            
+                return redirect()->back();
+            } else {
+                return redirect()->back();
+            }
         }
 }

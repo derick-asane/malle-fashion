@@ -60,6 +60,8 @@ Route::put('product/{product}/updateproduct', [ProductController::class, 'update
 Route::get('/cart', [CartController::class, 'create'])->name('client.cart');
 Route::post('/cart/{product_id}', [CartController::class, 'addToCart'])->name('store.addtocart');
 Route::post('/cart/delete/{id}', [CartController::class, 'destroy'])->name('delete.cart');
+Route::post('/cart/edit/quantity/{id}', [CartController::class, 'updateQuantity'])->name('update.quantity');
+
 
 
 

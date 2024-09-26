@@ -68,6 +68,10 @@
                         <img src="{{ asset('svg/feedback-icon.svg') }}" alt="" class="h-8 w-8">
                         <a href="http://">Feedback</a>
                     </div>
+                    <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
+                        <img src="{{ asset('svg/logout-icon.svg') }}" alt="" class="h-8 w-8">
+                        <a href="{{ route('logout') }}">Logout</a>
+                    </div>
                 </div>
                
 
