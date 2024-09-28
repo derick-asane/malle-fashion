@@ -65,6 +65,12 @@ Route::post('/cart/edit/quantity/{id}', [CartController::class, 'updateQuantity'
 
 
 //Order route
+
+Route::get('/myorder', function () {
+    return view('client.myorder');
+})->name('client.order');
+
+
 Route::post('/order', [OrderController::class, 'store'])->name('store.order');
 
 

@@ -72,7 +72,6 @@ class OrderController extends Controller
                 
             ]);
 
-            
 
             // Process the payment using a fictional payment API
             $paymentResponse = $this->processPayment($request->payment_method, $amount, $request->mobile_number);
@@ -113,7 +112,6 @@ class OrderController extends Controller
                 'message' => 'Failed to place order: ' . $e->getMessage(),
             ], 400);
         }
-
 
     }
 
