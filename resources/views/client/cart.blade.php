@@ -77,7 +77,7 @@
                         <span class="text-[30px] text-green-600">Make payment</span>
                     </div>
                     <hr>
-                    <form action="" class="p-2">
+                    <form action="{{ route('store.order', ['total' => $total])}}" class="p-2" method="POST">
                         @csrf
 
                         <div>
@@ -87,23 +87,23 @@
                             </div>
                             <div class="flex  items-center justify-around mb-4">
                                 <div class="w-[40%]">
-                                    <label for="productname" class="block font-medium">City</label>
-                                    <input id="productname" type="text" name="name" required autofocus class="form-input border border-gray-400 mt-1 block w-full outline-none rounded" placeholder="Enter your city ...">
+                                    <label for="city" class="block font-medium">City</label>
+                                    <input id="city" type="text" name="city" required autofocus class="form-input border border-gray-400 mt-1 block w-full outline-none rounded" placeholder="Enter your city ...">
                                 </div>
                                 <div class="w-[40%]">
-                                    <label for="productname" class="block font-medium">Quater</label>
-                                    <input id="productname" type="text" name="name" required autofocus class="form-input border border-gray-400 mt-1 block w-full outline-none rounded" placeholder="Enter your quater ...">
+                                    <label for="quarter" class="block font-medium">Quater</label>
+                                    <input id="quarter" type="text" name="quarter" required autofocus class="form-input border border-gray-400 mt-1 block w-full outline-none rounded" placeholder="Enter your quater ...">
                                 </div>
                             </div>
 
                             <div class="flex  items-center justify-around mb-4">
                                 <div class="w-[40%]">
-                                    <label for="productname" class="block font-medium">Adress</label>
-                                    <input id="productname" type="text" name="name" required autofocus class="form-input border border-gray-400 mt-1 block w-full outline-none rounded" placeholder="Enter your address ...">
+                                    <label for="address" class="block font-medium">Adress</label>
+                                    <input id="address" type="text" name="address" required autofocus class="form-input border border-gray-400 mt-1 block w-full outline-none rounded" placeholder="Enter your address ...">
                                 </div>
                                 <div class="w-[40%]">
-                                    <label for="productname" class="block font-medium">Phone</label>
-                                    <input id="productname" type="text" name="name" required autofocus class="form-input border border-gray-400 mt-1 block w-full outline-none rounded" placeholder="Enter your tel ...">
+                                    <label for="phone" class="block font-medium">Phone</label>
+                                    <input id="phone" type="text" name="phone" required autofocus class="form-input border border-gray-400 mt-1 block w-full outline-none rounded" placeholder="Enter your tel ...">
                                 </div>
                             </div>
                         </div>
@@ -124,8 +124,8 @@
                                         </select>
                                     </div>
                                     <div class="w-[40%]">
-                                        <label for="productname" class="block font-medium">Mobile Number</label>
-                                        <input id="productname" type="number" name="mobile_number" required autofocus class="border-b border-gray-400 mt-1 block w-full outline-none" placeholder="Enter your mobile money number ...">
+                                        <label for="mobile_number" class="block font-medium">Mobile Number</label>
+                                        <input id="mobile_number" type="number" name="mobile_number" required autofocus class="border-b border-gray-400 mt-1 block w-full outline-none" placeholder="Enter your mobile money number ...">
                                     </div>
                                 </div>
     
@@ -151,11 +151,6 @@
                 </div>
             </div>
             
-
-
-
-
-
 
 
             <div class="w-[35%] bg-blue-400 rounded-md">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Middleware\AuthenticateMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -61,6 +62,11 @@ Route::get('/cart', [CartController::class, 'create'])->name('client.cart');
 Route::post('/cart/{product_id}', [CartController::class, 'addToCart'])->name('store.addtocart');
 Route::post('/cart/delete/{id}', [CartController::class, 'destroy'])->name('delete.cart');
 Route::post('/cart/edit/quantity/{id}', [CartController::class, 'updateQuantity'])->name('update.quantity');
+
+
+//Order route
+Route::post('/order', [OrderController::class, 'store'])->name('store.order');
+
 
 
 
