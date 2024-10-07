@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Session;
 use App\Models\User;
+use App\Models\Order;
+
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -35,12 +37,16 @@ class AuthController extends Controller
         if($user){
              Auth::login($user);
 
-             
 
             if($user->role ==='client'){
                 return redirect()->route('client.home')->with('login successful'); 
             }else{
-                return redirect()->route('admin.dashboard')->with('login successful');      
+                $usersCount = User::count();
+                $ordersCount = Order::count();
+                $deliveredOrdersCount = Order::where('status', 'delivered')->count();
+
+                
+                return redirect()->route('admin.dashboard')->with(compact('usersCount', 'ordersCount', 'deliveredOrdersCount'))->with('message', 'Login successful');
             }
         }else{
             // Handle the case where the user is not found

@@ -3,10 +3,10 @@
 @section('content')
 
     <div>
-        <span>MyOders</span>
+        <span>MyOder History</span>
     </div>
 
     <div>
-        
+
     </div>
 @endsection

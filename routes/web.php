@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\admin\DashboardController;
+
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 
 
@@ -77,14 +80,11 @@ Route::post('/order', [OrderController::class, 'store'])->name('store.order');
 
 
 
-
-
-
-
-
 //admin
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->name('admin.dashboard');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::get('/users', [DashboardController::class, 'getUsers'])->name('admin.users');
+Route::get('/orders', [DashboardController::class, 'getOrders'])->name('admin.orders');
+
 

@@ -17,7 +17,7 @@
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
 
         <div class="flex h-screen">
-            <aside class="w-[15%] bg-slate-400 p-4 rounded-md hidden md:flex md:flex-col gap-2">
+            <aside class="w-[15%] bg-slate-400 p-4 rounded-md hidden md:flex md:flex-col gap-2 overflow-y-hidden">
                 <!-- sidebar links etc -->
 
                 <div class="flex items-center justify-center text-pink-300 text-[20px] bold italic">
@@ -35,42 +35,44 @@
 
                     <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
                         <img src="{{ asset('svg/dashboard-icon.svg') }}" alt="" class="h-8 w-8">
-                        <a href="{{ route("admin.dashboard")}}">Dashboard</a>
+                        <a href="{{ route("admin.dashboard")}}" class="bold">Dashboard</a>
                     </div>
-
+                    <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
+                        <img src="{{ asset('svg/order-icon.svg') }}" alt="" class="h-8 w-8">
+                        <a href=" {{ route('admin.orders')}}" class="bold">Orders</a>
+                    </div>
 
                     <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
                         <img src="{{ asset('svg/users-icon.svg') }}" alt="" class="h-8 w-8">
-                        <a href="http://">Users</a>
+                        <a href=" {{ route('admin.users') }}" class="bold">Users</a>
                     </div>
 
                     <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
                         <img src="{{ asset('svg/product-icon.svg') }}" alt="" class="h-8 w-8">
-                        <a href="{{ route("admin.product") }}">Products</a>
-                    </div>
-
-                    <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
-                        <img src="{{ asset('svg/shopping-bag.svg') }}" alt="" class="h-8 w-8">
-                        <a href="http://">Shop</a>
-                    </div>
-                    
-                    <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
-                        <img src="{{ asset('svg/order-icon.svg') }}" alt="" class="h-8 w-8">
-                        <a href="http://">Orders</a>
+                        <a href="{{ route("admin.product") }}" class="bold">Products</a>
                     </div>
 
                     <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
                         <img src="{{ asset('svg/delivered-icon.svg') }}" alt="" class="h-8 w-8">
-                        <a href="http://">Delivered</a>
+                        <a href="http://" class="bold">Delivered</a>
                     </div>
 
                     <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
+                        <img src="{{ asset('svg/shopping-bag.svg') }}" alt="" class="h-8 w-8">
+                        <a href="http://" class="bold">Shop</a>
+                    </div>
+                    
+
+                    <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
                         <img src="{{ asset('svg/feedback-icon.svg') }}" alt="" class="h-8 w-8">
-                        <a href="http://">Feedback</a>
+                        <a href="http://" class="bold">Feedback</a>
                     </div>
                     <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
                         <img src="{{ asset('svg/logout-icon.svg') }}" alt="" class="h-8 w-8">
-                        <a href="{{ route('logout') }}">Logout</a>
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button type="submit" class="text-red-500 bold">Logout</button>
+                        </form>
                     </div>
                 </div>
                
@@ -86,7 +88,7 @@
                     <div class="w-[40%] sm:w-[15%] flex items-center justify-between">
                         <div class="relative">
                             <img src="{{ asset('svg/noti-bell.svg') }}" alt="" class="h-8 w-8">
-                            <div class="animate-ping absolute bg-red-600 text-[8px] rounded-full top-0 left-2/3">6</div>
+                            <div class="animate-ping absolute bg-red-600 rounded-full top-0 left-2/3 text-xl text-white">6</div>
                         </div>
                         <span class="bold">{{Auth::User()->username}}</span>
                         <div class="avatar" data-toggle="modal" data-target="#userModal">
@@ -96,7 +98,7 @@
                         </div>
                     </div>
                 </section>
-                <main class="p-2">
+                <main class="p-2 flex-1 overflow-y-auto">
                     @yield('adminContent')
                 </main>
             </div>
@@ -104,7 +106,7 @@
         </div>
         
         
-       <x-footer />
+       <!-- <x-footer /> -->
         <script>
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');

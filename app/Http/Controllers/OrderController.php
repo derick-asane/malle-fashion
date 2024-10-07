@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\Cart;
+use App\Models\Product;
+
 
 
 use Illuminate\Http\Request;
@@ -98,10 +100,14 @@ class OrderController extends Controller
                 // Commit the transaction
                 DB::commit();
 
-                return response()->json([
-                    'message' => 'Order placed successfully.',
-                    'order' => $order->load('products'), // Eager load products
-                ], 201);
+                
+
+
+                $products = Product::all();
+    
+            return view('client.shop', compact('products'))->with('OrderSuccess', 'Order created successfully');
+                
+
             } else {
                 throw new Exception('Payment failed: ' . $paymentResponse['message']);
             }

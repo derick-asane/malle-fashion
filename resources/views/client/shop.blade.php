@@ -13,6 +13,12 @@
             </div>
         @endif
 
+        @if (session('OrderSuccess'))
+            <div id="alert" class="absolute top-0 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-4 rounded mb-4 transition-transform duration-500 ease-in-out translate-y-[-100%]">
+                {{ session('OrderSuccess') }}
+            </div>
+        @endif
+
         @if (session('error'))
             <div id="alert" class="absolute top-0 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-4 rounded mb-4 transition-transform duration-500 ease-in-out translate-y-[-100%]">
                 {{ session('error') }}
