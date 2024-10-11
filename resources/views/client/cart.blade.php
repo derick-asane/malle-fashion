@@ -153,8 +153,8 @@
             
 
 
-            <div class="w-[35%] bg-blue-400 rounded-md">
-                <div class="w-[100%] bg-white my-3 px-4">
+            <div class="w-[35%]">
+                <div class="w-[100%] bg-white my-3 px-4 border-blue-400 rounded-md border-y-8 border-x-1.5 shadow-2xl">
                     <div class="flex justify-center py-2 text-bold">
                         <span class="text-green-500">Order Summary</span>
                     </div>

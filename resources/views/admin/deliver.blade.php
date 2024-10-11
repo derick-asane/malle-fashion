@@ -3,7 +3,7 @@
 
 @section('adminContent')
     <div class="w-full flex justify-center text-[20px] sm:text-[40px] bold italic">
-        <span class="">List Of Orders </span>
+        <span class="">List Of Delivered </span>
     </div>
 
     <hr class="py-4">
@@ -24,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody class="text-gray-600 text-sm font-light">
-                    @foreach($orders as $order)
+                    @foreach($delivered_orders as $order)
                         <tr class="border-b border-gray-200 hover:bg-gray-100">
                             <td class="py-3 px-6 text-center">{{$order->user->username}}</td>
                             <td class="py-3 px-6 text-center" >{{$order->city}}</td>

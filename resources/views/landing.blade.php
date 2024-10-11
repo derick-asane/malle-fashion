@@ -31,7 +31,7 @@
                 <h3 class="text-lg font-semibold mb-2">Shoe</h3>
                 <p class="text-gray-600 mb-4">Product description goes here</p>
                 <div class="flex justify-between items-center">
-                <span class="text-lg font-bold text-gray-800">$99.99</span>
+                <span class="text-lg font-bold text-gray-800">XAF 20,000</span>
                 <a href="#" class="bg-gray-100 px-3 py-2 border rounded-xl">add Cart</a>
             </div>
             </div> 
@@ -45,7 +45,7 @@
                 <h3 class="text-lg font-semibold mb-2">Trouser</h3>
                 <p class="text-gray-600 mb-4">Product description goes here</p>
                 <div class="flex justify-between items-center">
-                <span class="text-lg font-bold text-gray-800">$99.99</span>
+                <span class="text-lg font-bold text-gray-800">XAF 9,000</span>
                 <a href="#" class="bg-gray-100 px-3 py-2 border rounded-xl">add Cart</a>
             </div>
             </div> 
@@ -60,7 +60,7 @@
                 <h3 class="text-lg font-semibold mb-2">Necklace</h3>
                 <p class="text-gray-600 mb-4">Product description goes here</p>
                 <div class="flex justify-between items-center">
-                <span class="text-lg font-bold text-gray-800">$99.99</span>
+                <span class="text-lg font-bold text-gray-800">XAF 15, 000</span>
                 <a href="#" class="bg-gray-100 px-3 py-2 border rounded-xl">add Cart</a>
             </div>
             </div> 
@@ -75,7 +75,7 @@
                 <h3 class="text-lg font-semibold mb-2">Necklace</h3>
                 <p class="text-gray-600 mb-4">Product description goes here</p>
                 <div class="flex justify-between items-center">
-                <span class="text-lg font-bold text-gray-800">$99.99</span>
+                <span class="text-lg font-bold text-gray-800">XAF 10, 000</span>
                 <a href="#" class="bg-gray-100 px-3 py-2 border rounded-xl">add Cart</a>
             </div>
             </div> 

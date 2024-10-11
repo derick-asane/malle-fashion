@@ -80,11 +80,17 @@ Route::post('/order', [OrderController::class, 'store'])->name('store.order');
 
 
 
+ 
 //admin
 
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/users', [DashboardController::class, 'getUsers'])->name('admin.users');
 Route::get('/orders', [DashboardController::class, 'getOrders'])->name('admin.orders');
+Route::get('/order_details/{id}', [DashboardController::class, 'show'])->name('order.details');
+Route::post('/order/updatestatus/{id}', [DashboardController::class, 'updateStatus'])->name('order.updatestatus');
+Route::get('/order/delivered', [DashboardController::class, 'deliveredOrders'])->name('admin.delivered');
+
+
 
 

@@ -32,4 +32,41 @@ class DashboardController extends Controller
 
         return view('admin.orders', compact('orders'));
     }
+
+    public function show($order_id)
+    {
+        
+        $order = Order::with('products')->find($order_id);
+        return view('admin.order_details', compact('order'));
+    }
+
+    
+    public function updateStatus(Request $request, $order_id)
+{
+    // Validate the request data
+    $request->validate([
+        'status' => 'required|in:pending,delivered,cancelled,confirmed'
+    ]);
+
+    // Retrieve the order
+    $order = Order::find($order_id);
+
+    if (!$order) {
+        // Return a 404 error if the order is not found
+        return response()->json(['message' => 'Order not found'], 404);
+    }
+
+    // Update the order status
+    $order->status = $request->input('status');
+    $order->save();
+
+    // Return a success response
+    return response()->json(['message' => 'Order status updated successfully'], 200);
+}
+
+public function deliveredOrders()
+{
+    $delivered_orders= Order::where('status', 'delivered')->with('user')->get();
+    return view('admin.deliver', compact('delivered_orders'));
+}
 }

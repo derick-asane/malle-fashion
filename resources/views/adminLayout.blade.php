@@ -54,7 +54,7 @@
 
                     <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
                         <img src="{{ asset('svg/delivered-icon.svg') }}" alt="" class="h-8 w-8">
-                        <a href="http://" class="bold">Delivered</a>
+                        <a href="{{ route('admin.delivered')}}" class="bold">Delivered</a>
                     </div>
 
                     <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
