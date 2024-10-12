@@ -3,7 +3,7 @@
 
 @section('adminContent')
     <div class="w-full flex justify-center text-[20px] sm:text-[40px] bold italic">
-        <span class="">List Of Delivered </span>
+        <span class="">Delivered Orders </span>
     </div>
 
     <hr class="py-4">

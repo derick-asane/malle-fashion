@@ -10,8 +10,8 @@
             <div class="hidden md:flex md:items-center md:space-x-8 ml-6">
                 <a href="{{ route('client.home')}}" class="text-white">Home</a>
                 <a href="{{ route('client.shop')}}" class="text-white">Shop</a>
-                <a href="{{ route('client.order')}}" class="text-white">MyOrders</a>
-                <a href="#" class="text-white">Favourite</a>
+                <a href="{{ route('client.orders')}}" class="text-white">MyOrders</a>
+                <a href="{{ route('favorite.product')}}" class="text-white">Favorite</a>
             </div>
             
             <div class="flex justify-end items-center">

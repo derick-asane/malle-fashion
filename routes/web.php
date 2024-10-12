@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\FavoriteController;
+
 use App\Http\Controllers\admin\DashboardController;
 
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -57,6 +59,11 @@ Route::post('/addproduct', [ProductController::class, 'store'])->name('storeprod
 Route::get('product/{product}/editproduct', [ProductController::class, 'edit'])->name('editproductform');
 Route::put('product/{product}/updateproduct', [ProductController::class, 'update'])->name('updateproductform');
 
+Route::post('/products/{product}/favorite', [FavoriteController::class, 'toggleFavorite'])->name('favorite');
+
+Route::get('/favorites', [FavoriteController::class, 'getUserFavorite'])->name('favorite.product');
+
+
 
 
 //Cart route
@@ -75,6 +82,11 @@ Route::get('/myorder', function () {
 
 
 Route::post('/order', [OrderController::class, 'store'])->name('store.order');
+
+Route::get('/client/orders', [OrderController::class, 'getUserOrders'])->name('client.orders');
+
+Route::get('/client_order_details/{id}', [OrderController::class, 'show'])->name('client.order.details');
+
 
 
 

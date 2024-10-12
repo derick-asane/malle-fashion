@@ -124,9 +124,11 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show($order_id)
     {
-       
+        
+        $order = Order::with('products')->find($order_id);
+        return view('client.client_order_details', compact('order'));
     }
 
     /**
@@ -151,6 +153,13 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function getUserOrders()
+    {
+        $orders = Order::where('user_id', auth()->id())->get();
+
+        return view('client.myorder', compact('orders'));
     }
 
     private function processPayment($paymentMethod, $amount, $mobileNumber)

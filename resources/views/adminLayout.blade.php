@@ -76,7 +76,6 @@
                     </div>
                 </div>
                
-
             </aside>
             <div class="w-[100%] sm:w-[85%]">
                 <section class="flex justify-between bg-white border-b-4 px-2 shadow-sm">

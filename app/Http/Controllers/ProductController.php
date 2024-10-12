@@ -19,9 +19,9 @@ class ProductController extends Controller
             $products = Product::all();
             return view('admin.product', compact('products'));
         }else{
-            $products = Product::all();
-    
-            return view('client.shop', compact('products'));
+            $products = Product::with('favorites')->get();
+
+            return view('client.shop', compact('products'));    
         } 
         
     }
@@ -136,4 +136,8 @@ class ProductController extends Controller
     {
         //
     }
+
+    //favorite here...
+
+    
 }
