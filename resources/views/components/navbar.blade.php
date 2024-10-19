@@ -1,5 +1,9 @@
 
 
+@php
+    $cartCount = \App\Models\Cart::where('user_id', Auth::id())->count();
+@endphp
+
 <nav class="bg-gray-800 p-4">
     <div class="container mx-auto flex justify-between items-center">
             <div>
@@ -12,6 +16,8 @@
                 <a href="{{ route('client.shop')}}" class="text-white">Shop</a>
                 <a href="{{ route('client.orders')}}" class="text-white">MyOrders</a>
                 <a href="{{ route('favorite.product')}}" class="text-white">Favorite</a>
+                <a href="{{ route('client.geolocation')}}" class="text-white">Geolocation</a>
+
             </div>
             
             <div class="flex justify-end items-center">
@@ -22,10 +28,10 @@
                     <div class="relative" >
                         <a href="{{ route('client.cart') }}"><img src="{{ asset('svg/shopping-cart-logo1.svg')}}" alt="cart" class="h-10 w-10  mx-4 "></a>
                         <span class="absolute p-1 bg-slate-400 rounded-full top-0 ">
-                            5 
+                            {{ $cartCount }}
                         </span>
                     </div>
-                    <div class="avatar" data-toggle="modal" data-target="#userModal">
+                    <div class="avatar cursor-pointer" data-toggle="modal" data-target="#userModal">
                         <!-- Display the user's avatar image here -->
                         <img src="{{ asset('images/shoe4.png') }}" alt="User Avatar" class="rounded-full h-10 w-10 border border-red-400">
                         

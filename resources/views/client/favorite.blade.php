@@ -6,7 +6,6 @@
         <div class="w-full flex justify-center text-[40px] bold mb-4">
             <span>Favorite products, {{Auth::User()->username}} </span>
         </div>
-
        
         <hr>
         <div class="w-full flex justify-between items-center px-4">

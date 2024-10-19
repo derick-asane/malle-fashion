@@ -11,6 +11,17 @@ class FavoriteController extends Controller
 {
     //
 
+    public function locateShop()
+    {
+        // Hardcoded shop coordinates (replace with actual shop latitude and longitude)
+        $coordinates = [
+            'lat' => 40.7128, // Example latitude for New York City
+            'lng' => -74.0060, // Example longitude for New York City
+        ];
+
+        return view('client.location', compact('coordinates'));
+    }
+
     public function toggleFavorite(Request $request, Product $product)
     {
         

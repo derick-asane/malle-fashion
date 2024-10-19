@@ -11,12 +11,16 @@ class DashboardController extends Controller
 {
     public function index()
 {
-    $data = order::all();
+    // Example data, you can fetch this from your database
+    $labels = ['July', 'August', 'September', 'October'];
+    $data = [65, 59, 80, 81];
+
+    
     $usersCount = User::count();
     $ordersCount = Order::count();
     $deliveredOrdersCount = Order::where('status', 'delivered')->count();
 
-    return view('admin.dashboard', compact('usersCount', 'ordersCount', 'deliveredOrdersCount', 'data'));
+    return view('admin.dashboard', compact('usersCount', 'ordersCount', 'deliveredOrdersCount', 'data', 'labels'));
 }
 
     public function getUsers()

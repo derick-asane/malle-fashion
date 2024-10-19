@@ -50,42 +50,47 @@ Route::get('/home', function () {
 
 
 //Products route
-Route::get('/shop', [ProductController::class, 'index'])->name('client.shop');
+Route::get('/shop', [ProductController::class, 'index'])->name('client.shop')->middleware('auth');
 
-Route::get('/product', [ProductController::class, 'index'])->name('admin.product');
+Route::get('/product', [ProductController::class, 'index'])->name('admin.product')->middleware('auth');
 
-Route::get('/addproduct', [ProductController::class, 'create'])->name('productform');
+Route::get('/addproduct', [ProductController::class, 'create'])->name('productform')->middleware('auth');
 Route::post('/addproduct', [ProductController::class, 'store'])->name('storeproduct');
-Route::get('product/{product}/editproduct', [ProductController::class, 'edit'])->name('editproductform');
-Route::put('product/{product}/updateproduct', [ProductController::class, 'update'])->name('updateproductform');
+Route::get('product/{product}/editproduct', [ProductController::class, 'edit'])->name('editproductform')->middleware('auth');
+Route::put('product/{product}/updateproduct', [ProductController::class, 'update'])->name('updateproductform')->middleware('auth');
 
-Route::post('/products/{product}/favorite', [FavoriteController::class, 'toggleFavorite'])->name('favorite');
 
-Route::get('/favorites', [FavoriteController::class, 'getUserFavorite'])->name('favorite.product');
+//
+Route::post('/products/{product}/favorite', [FavoriteController::class, 'toggleFavorite'])->name('favorite')->middleware('auth');
+
+Route::get('/favorites', [FavoriteController::class, 'getUserFavorite'])->name('favorite.product')->middleware('auth');
+
+Route::get('/geolocation', [FavoriteController::class, 'locateShop'])->name('client.geolocation')->middleware('auth');
+
 
 
 
 
 //Cart route
 
-Route::get('/cart', [CartController::class, 'create'])->name('client.cart');
-Route::post('/cart/{product_id}', [CartController::class, 'addToCart'])->name('store.addtocart');
-Route::post('/cart/delete/{id}', [CartController::class, 'destroy'])->name('delete.cart');
-Route::post('/cart/edit/quantity/{id}', [CartController::class, 'updateQuantity'])->name('update.quantity');
+Route::get('/cart', [CartController::class, 'create'])->name('client.cart')->middleware('auth');
+Route::post('/cart/{product_id}', [CartController::class, 'addToCart'])->name('store.addtocart')->middleware('auth');
+Route::post('/cart/delete/{id}', [CartController::class, 'destroy'])->name('delete.cart')->middleware('auth');
+Route::post('/cart/edit/quantity/{id}', [CartController::class, 'updateQuantity'])->name('update.quantity')->middleware('auth');
 
 
 //Order route
 
 Route::get('/myorder', function () {
     return view('client.myorder');
-})->name('client.order');
+})->name('client.order')->middleware('auth');
 
 
-Route::post('/order', [OrderController::class, 'store'])->name('store.order');
+Route::post('/order', [OrderController::class, 'store'])->name('store.order')->middleware('auth');
 
-Route::get('/client/orders', [OrderController::class, 'getUserOrders'])->name('client.orders');
+Route::get('/client/orders', [OrderController::class, 'getUserOrders'])->name('client.orders')->middleware('auth');
 
-Route::get('/client_order_details/{id}', [OrderController::class, 'show'])->name('client.order.details');
+Route::get('/client_order_details/{id}', [OrderController::class, 'show'])->name('client.order.details')->middleware('auth');
 
 
 
@@ -96,12 +101,12 @@ Route::get('/client_order_details/{id}', [OrderController::class, 'show'])->name
 //admin
 
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-Route::get('/users', [DashboardController::class, 'getUsers'])->name('admin.users');
-Route::get('/orders', [DashboardController::class, 'getOrders'])->name('admin.orders');
-Route::get('/order_details/{id}', [DashboardController::class, 'show'])->name('order.details');
-Route::post('/order/updatestatus/{id}', [DashboardController::class, 'updateStatus'])->name('order.updatestatus');
-Route::get('/order/delivered', [DashboardController::class, 'deliveredOrders'])->name('admin.delivered');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware('auth');
+Route::get('/users', [DashboardController::class, 'getUsers'])->name('admin.users')->middleware('auth');
+Route::get('/orders', [DashboardController::class, 'getOrders'])->name('admin.orders')->middleware('auth');
+Route::get('/order_details/{id}', [DashboardController::class, 'show'])->name('order.details')->middleware('auth');
+Route::post('/order/updatestatus/{id}', [DashboardController::class, 'updateStatus'])->name('order.updatestatus')->middleware('auth');
+Route::get('/order/delivered', [DashboardController::class, 'deliveredOrders'])->name('admin.delivered')->middleware('auth');
 
 
 

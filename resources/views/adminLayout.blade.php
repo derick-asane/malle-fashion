@@ -10,12 +10,14 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <!-- Styles -->
        
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-
+        @php
+             $pendingOrdersCount = \App\Models\Order::where('status', 'pending')->count();
+        @endphp
         <div class="flex h-screen">
             <aside class="w-[15%] bg-slate-400 p-4 rounded-md hidden md:flex md:flex-col gap-2 overflow-y-hidden">
                 <!-- sidebar links etc -->
@@ -87,7 +89,7 @@
                     <div class="w-[40%] sm:w-[15%] flex items-center justify-between">
                         <div class="relative">
                             <img src="{{ asset('svg/noti-bell.svg') }}" alt="" class="h-8 w-8">
-                            <div class="animate-ping absolute bg-red-600 rounded-full top-0 left-2/3 text-xl text-white">6</div>
+                            <div class="animate-ping absolute bg-red-600 text-[10px] text-white rounded-full top-0 left-2/3 px-1">{{ $pendingOrdersCount }}</div>
                         </div>
                         <span class="bold">{{Auth::User()->username}}</span>
                         <div class="avatar" data-toggle="modal" data-target="#userModal">
@@ -97,7 +99,7 @@
                         </div>
                     </div>
                 </section>
-                <main class="p-2 flex-1 overflow-y-auto">
+                <main class="p-2 h-[90%] overflow-y-auto">
                     @yield('adminContent')
                 </main>
             </div>
