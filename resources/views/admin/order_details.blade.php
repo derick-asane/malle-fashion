@@ -63,7 +63,7 @@
                     <span class="text-green-500">Order Summary</span>
                 </div>
                 <hr>
-                <div><span>PRICE DETAILS ({{$order->count()}} {{$order->count() > 1 ? "Items" : "Item" }})</span></div>
+                <div><span>PRICE DETAILS</span></div>
                 <div class="flex justify-between py-2">
                     <span class="text-gray-400">Total MRP</span>
                     <span>XAF 3000</span>

@@ -48,7 +48,6 @@ Route::get('/home', function () {
 
 
 
-
 //Products route
 Route::get('/shop', [ProductController::class, 'index'])->name('client.shop')->middleware('auth');
 

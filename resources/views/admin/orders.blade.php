@@ -30,7 +30,7 @@
                             <td class="py-3 px-6 text-center" >{{$order->city}}</td>
                             <td class="py-3 px-6 text-center">{{$order->quarter}}</td>
                             <td class="py-3 px-6 text-center">{{$order->phone}}</td>
-                            <td class="py-3 px-6 text-center">50,000</td>
+                            <td class="py-3 px-6 text-center">XAF {{number_format($order->payment->amount)}}</td>
                             <td class="py-3 px-6 text-center uppercase">{{$order->status}}</td>
                             <td class="py-3 px-6 text-center">
                                 <a href="{{ route('order.details', ['id' => $order->id]) }}" class="bg-green-400 text-white hover:bg-green-800 py-1 px-4 rounded">View</a></td>

@@ -32,7 +32,8 @@ class DashboardController extends Controller
 
     public function getOrders()
     {
-        $orders = Order::with('user')->get();
+        // $orders = Order::with('user')->get();
+        $orders = Order::with(['user', 'payment'])->get();
 
         return view('admin.orders', compact('orders'));
     }

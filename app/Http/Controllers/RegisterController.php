@@ -50,7 +50,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request->input('password'))
         ]);
 
-        return response()->json(['message' => 'User created successfully', 'user' => $user]);
+        return view('auth.login')->with('success', 'user created successfully');
     }
 
     /**
