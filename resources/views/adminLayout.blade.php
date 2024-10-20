@@ -61,13 +61,13 @@
 
                     <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
                         <img src="{{ asset('svg/shopping-bag.svg') }}" alt="" class="h-8 w-8">
-                        <a href="http://" class="bold">Shop</a>
+                        <a href="#" class="bold">Shop</a>
                     </div>
                     
 
                     <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
                         <img src="{{ asset('svg/feedback-icon.svg') }}" alt="" class="h-8 w-8">
-                        <a href="http://" class="bold">Feedback</a>
+                        <a href="#" class="bold">Feedback</a>
                     </div>
                     <div class="text-white flex gap-6 items-center hover:bg-slate-600 rounded-md p-1">
                         <img src="{{ asset('svg/logout-icon.svg') }}" alt="" class="h-8 w-8">
